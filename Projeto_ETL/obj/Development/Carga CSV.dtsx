@@ -1,0 +1,2070 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/16/2024 7:03:26 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JESSICACLARISSA"
+  DTS:CreatorName="JESSICACLARISSA\bergo"
+  DTS:DTSID="{A22234CA-7AD5-425D-927A-572226FFB1C0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Carga CSV"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{425E9F86-01B1-43EC-B299-D26A66CC8FDC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{5363C26F-7B1C-499B-A420-1BCDBD7D1255}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\bergo\Downloads\Projeto_BI\Projeto_BI\CSV\IMDb-movies_excel.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{B36AFD81-D552-4CAF-99DA-7F5619D225EE}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\bergo\Downloads\Projeto_BI\Projeto_BI\CSV\IMDb-ratings_excel.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JESSICACLARISSA.Imdb]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{911AA380-0184-4967-80D5-1A8A5CD3A55D}"
+      DTS:ObjectName="JESSICACLARISSA.Imdb">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=JESSICACLARISSA;Initial Catalog=Imdb;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JESSICACLARISSA.Imdb 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B695EB1E-56F7-4FD9-95E7-F304C1F6A62E}"
+      DTS:ObjectName="JESSICACLARISSA.Imdb 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=JESSICACLARISSA;Initial Catalog=Imdb;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JESSICACLARISSA.Imdb 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1F37FEBC-BD31-4093-8A0A-8C4A918089F6}"
+      DTS:ObjectName="JESSICACLARISSA.Imdb 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=JESSICACLARISSA;Initial Catalog=Imdb;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JESSICACLARISSA.ImdbStage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{31FF5BE5-E3DE-49B1-958B-44E9E42FDC76}"
+      DTS:ObjectName="JESSICACLARISSA.ImdbStage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=JESSICACLARISSA;Initial Catalog=ImdbStage;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Carga CSV-{31FF5BE5-E3DE-49B1-958B-44E9E42FDC76}JESSICACLARISSA.ImdbStage;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence CSV"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{629543F8-B07F-48E7-9036-AE60736CB7A7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence CSV">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence CSV\Carga Movies"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{76E5F37F-1CB7-485E-B47E-E808B81FAED7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carga Movies"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence CSV\Carga Movies\Destino OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Destino OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[dbo].[Movie]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[JESSICACLARISSA.Imdb]"
+                      connectionManagerRefId="Package.ConnectionManagers[JESSICACLARISSA.Imdb]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[imdb_title_id]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="imdb_title_id"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[imdb_title_id]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[imdb_title_id]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[title]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="title"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[title]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[title]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[original_title]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="original_title"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[original_title]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[original_title]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[year]"
+                          cachedDataType="r8"
+                          cachedName="year"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[year]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[year]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[date_published]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="date_published"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[date_published]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[date_published]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[genre]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="genre"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[genre]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[genre]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[duration]"
+                          cachedDataType="r8"
+                          cachedName="duration"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[duration]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[duration]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[country]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="country"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[country]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[country]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[language]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="language"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[language]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[language]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[director]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="director"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[director]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[director]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[writer]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="writer"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[writer]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[writer]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[production_company]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="production_company"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[production_company]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[production_company]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[actors]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="actors"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[actors]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[actors]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[description]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="description"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[description]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[description]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[avg_vote]"
+                          cachedDataType="r8"
+                          cachedName="avg_vote"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[avg_vote]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[avg_vote]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes]"
+                          cachedDataType="r8"
+                          cachedName="votes"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[budget]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="budget"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[budget]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[budget]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[usa_gross_income]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="usa_gross_income"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[usa_gross_income]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[usa_gross_income]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[worlwide_gross_income]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="worlwide_gross_income"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[worlwide_gross_income]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[worlwide_gross_income]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[metascore]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="metascore"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[metascore]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[metascore]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[reviews_from_users]"
+                          cachedDataType="r8"
+                          cachedName="reviews_from_users"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[reviews_from_users]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[reviews_from_users]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[reviews_from_critics]"
+                          cachedDataType="r8"
+                          cachedName="reviews_from_critics"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[reviews_from_critics]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[reviews_from_critics]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[F23]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="F23"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[F23]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F23]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[F24]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="F24"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[F24]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F24]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[F25]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="F25"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[F25]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F25]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[imdb_title_id]"
+                          dataType="wstr"
+                          length="255"
+                          name="imdb_title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[title]"
+                          dataType="wstr"
+                          length="255"
+                          name="title" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[original_title]"
+                          dataType="wstr"
+                          length="255"
+                          name="original_title" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[year]"
+                          dataType="r8"
+                          name="year" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[date_published]"
+                          dataType="wstr"
+                          length="255"
+                          name="date_published" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[genre]"
+                          dataType="wstr"
+                          length="255"
+                          name="genre" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[duration]"
+                          dataType="r8"
+                          name="duration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[country]"
+                          dataType="wstr"
+                          length="255"
+                          name="country" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[language]"
+                          dataType="wstr"
+                          length="255"
+                          name="language" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[director]"
+                          dataType="wstr"
+                          length="255"
+                          name="director" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[writer]"
+                          dataType="wstr"
+                          length="255"
+                          name="writer" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[production_company]"
+                          dataType="wstr"
+                          length="255"
+                          name="production_company" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[actors]"
+                          dataType="wstr"
+                          length="255"
+                          name="actors" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[description]"
+                          dataType="wstr"
+                          length="255"
+                          name="description" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[avg_vote]"
+                          dataType="r8"
+                          name="avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes]"
+                          dataType="r8"
+                          name="votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[budget]"
+                          dataType="wstr"
+                          length="255"
+                          name="budget" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[usa_gross_income]"
+                          dataType="wstr"
+                          length="255"
+                          name="usa_gross_income" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[worlwide_gross_income]"
+                          dataType="wstr"
+                          length="255"
+                          name="worlwide_gross_income" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[metascore]"
+                          dataType="wstr"
+                          length="255"
+                          name="metascore" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[reviews_from_users]"
+                          dataType="r8"
+                          name="reviews_from_users" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[reviews_from_critics]"
+                          dataType="r8"
+                          name="reviews_from_critics" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[F23]"
+                          dataType="wstr"
+                          length="255"
+                          name="F23" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[F24]"
+                          dataType="wstr"
+                          length="255"
+                          name="F24" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[F25]"
+                          dataType="wstr"
+                          length="255"
+                          name="F25" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence CSV\Carga Movies\Origem do Excel"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Origem do Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+                  description="Origem do Excel"
+                  name="Origem do Excel"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">Worksheet$</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="O mapeamento de parâmetros no comando SQL para variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel]"
+                      name="Saída de Origem do Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[imdb_title_id]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[imdb_title_id]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[imdb_title_id]"
+                          name="imdb_title_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[title]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[title]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[title]"
+                          name="title"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[original_title]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[original_title]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[original_title]"
+                          name="original_title"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[year]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[year]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[year]"
+                          name="year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[date_published]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[date_published]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[date_published]"
+                          name="date_published"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[genre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[genre]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[genre]"
+                          name="genre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[duration]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[duration]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[duration]"
+                          name="duration"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[country]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[country]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[country]"
+                          name="country"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[language]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[language]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[language]"
+                          name="language"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[director]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[director]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[director]"
+                          name="director"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[writer]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[writer]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[writer]"
+                          name="writer"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[production_company]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[production_company]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[production_company]"
+                          name="production_company"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[actors]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[actors]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[actors]"
+                          name="actors"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[description]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[description]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[description]"
+                          name="description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[avg_vote]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[avg_vote]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[avg_vote]"
+                          name="avg_vote"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes]"
+                          name="votes"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[budget]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[budget]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[budget]"
+                          name="budget"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[usa_gross_income]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[usa_gross_income]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[usa_gross_income]"
+                          name="usa_gross_income"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[worlwide_gross_income]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[worlwide_gross_income]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[worlwide_gross_income]"
+                          name="worlwide_gross_income"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[metascore]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[metascore]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[metascore]"
+                          name="metascore"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[reviews_from_users]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[reviews_from_users]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[reviews_from_users]"
+                          name="reviews_from_users"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[reviews_from_critics]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[reviews_from_critics]"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[reviews_from_critics]"
+                          name="reviews_from_critics"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F23]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[F23]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F23]"
+                          name="F23"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F24]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[F24]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F24]"
+                          name="F24"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F25]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[F25]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[F25]"
+                          name="F25"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[imdb_title_id]"
+                          dataType="wstr"
+                          length="255"
+                          name="imdb_title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[title]"
+                          dataType="wstr"
+                          length="255"
+                          name="title" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[original_title]"
+                          dataType="wstr"
+                          length="255"
+                          name="original_title" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[year]"
+                          dataType="r8"
+                          name="year" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[date_published]"
+                          dataType="wstr"
+                          length="255"
+                          name="date_published" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[genre]"
+                          dataType="wstr"
+                          length="255"
+                          name="genre" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[duration]"
+                          dataType="r8"
+                          name="duration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[country]"
+                          dataType="wstr"
+                          length="255"
+                          name="country" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[language]"
+                          dataType="wstr"
+                          length="255"
+                          name="language" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[director]"
+                          dataType="wstr"
+                          length="255"
+                          name="director" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[writer]"
+                          dataType="wstr"
+                          length="255"
+                          name="writer" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[production_company]"
+                          dataType="wstr"
+                          length="255"
+                          name="production_company" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[actors]"
+                          dataType="wstr"
+                          length="255"
+                          name="actors" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[description]"
+                          dataType="wstr"
+                          length="255"
+                          name="description" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[avg_vote]"
+                          dataType="r8"
+                          name="avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes]"
+                          dataType="r8"
+                          name="votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[budget]"
+                          dataType="wstr"
+                          length="255"
+                          name="budget" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[usa_gross_income]"
+                          dataType="wstr"
+                          length="255"
+                          name="usa_gross_income" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[worlwide_gross_income]"
+                          dataType="wstr"
+                          length="255"
+                          name="worlwide_gross_income" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[metascore]"
+                          dataType="wstr"
+                          length="255"
+                          name="metascore" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[reviews_from_users]"
+                          dataType="r8"
+                          name="reviews_from_users" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[reviews_from_critics]"
+                          dataType="r8"
+                          name="reviews_from_critics" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[F23]"
+                          dataType="wstr"
+                          length="255"
+                          name="F23" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[F24]"
+                          dataType="wstr"
+                          length="255"
+                          name="F24" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[F25]"
+                          dataType="wstr"
+                          length="255"
+                          name="F25" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem do Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[imdb_title_id]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[imdb_title_id]"
+                          name="imdb_title_id" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[title]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[title]"
+                          name="title" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[original_title]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[original_title]"
+                          name="original_title" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[year]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[year]"
+                          name="year" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[date_published]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[date_published]"
+                          name="date_published" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[genre]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[genre]"
+                          name="genre" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[duration]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[duration]"
+                          name="duration" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[country]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[country]"
+                          name="country" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[language]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[language]"
+                          name="language" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[director]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[director]"
+                          name="director" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[writer]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[writer]"
+                          name="writer" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[production_company]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[production_company]"
+                          name="production_company" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[actors]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[actors]"
+                          name="actors" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[description]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[description]"
+                          name="description" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[avg_vote]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[avg_vote]"
+                          name="avg_vote" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes]"
+                          name="votes" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[budget]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[budget]"
+                          name="budget" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[usa_gross_income]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[usa_gross_income]"
+                          name="usa_gross_income" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[worlwide_gross_income]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[worlwide_gross_income]"
+                          name="worlwide_gross_income" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[metascore]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[metascore]"
+                          name="metascore" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[reviews_from_users]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[reviews_from_users]"
+                          name="reviews_from_users" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[reviews_from_critics]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[reviews_from_critics]"
+                          name="reviews_from_critics" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[F23]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[F23]"
+                          name="F23" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[F24]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[F24]"
+                          name="F24" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[F25]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[F25]"
+                          name="F25" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence CSV\Carga Movies.Paths[Saída de Origem do Excel]"
+                  endId="Package\Sequence CSV\Carga Movies\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem do Excel"
+                  startId="Package\Sequence CSV\Carga Movies\Origem do Excel.Outputs[Saída de Origem do Excel]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence CSV\Carga Ratings"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarefa Fluxo de Dados"
+          DTS:DTSID="{E09CFFC4-D7D3-4B5D-B311-87551B92E3D8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carga Ratings"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+                  description="Destino OLE DB"
+                  name="Destino OLE DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">[Rating]</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[JESSICACLARISSA.Imdb 2]"
+                      connectionManagerRefId="Package.ConnectionManagers[JESSICACLARISSA.Imdb 2]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                      errorOrTruncationOperation="Inserir"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de Destino OLE DB">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[imdb_title_id]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="imdb_title_id"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[imdb_title_id]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[imdb_title_id]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[weighted_average_vote]"
+                          cachedDataType="r8"
+                          cachedName="weighted_average_vote"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[weighted_average_vote]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[weighted_average_vote]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[total_votes]"
+                          cachedDataType="r8"
+                          cachedName="total_votes"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[total_votes]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[total_votes]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[mean_vote]"
+                          cachedDataType="r8"
+                          cachedName="mean_vote"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[mean_vote]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[mean_vote]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[median_vote]"
+                          cachedDataType="r8"
+                          cachedName="median_vote"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[median_vote]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[median_vote]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_10]"
+                          cachedDataType="r8"
+                          cachedName="votes_10"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_10]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_10]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_9]"
+                          cachedDataType="r8"
+                          cachedName="votes_9"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_9]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_9]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_8]"
+                          cachedDataType="r8"
+                          cachedName="votes_8"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_8]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_8]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_7]"
+                          cachedDataType="r8"
+                          cachedName="votes_7"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_7]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_7]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_6]"
+                          cachedDataType="r8"
+                          cachedName="votes_6"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_6]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_6]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_5]"
+                          cachedDataType="r8"
+                          cachedName="votes_5"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_5]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_5]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_4]"
+                          cachedDataType="r8"
+                          cachedName="votes_4"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_4]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_4]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_3]"
+                          cachedDataType="r8"
+                          cachedName="votes_3"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_3]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_3]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_2]"
+                          cachedDataType="r8"
+                          cachedName="votes_2"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_2]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_2]" />
+                        <inputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[votes_1]"
+                          cachedDataType="r8"
+                          cachedName="votes_1"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_1]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_1]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[imdb_title_id]"
+                          dataType="wstr"
+                          length="255"
+                          name="imdb_title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[weighted_average_vote]"
+                          dataType="r8"
+                          name="weighted_average_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[total_votes]"
+                          dataType="r8"
+                          name="total_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[mean_vote]"
+                          dataType="r8"
+                          name="mean_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[median_vote]"
+                          dataType="r8"
+                          name="median_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_10]"
+                          dataType="r8"
+                          name="votes_10" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_9]"
+                          dataType="r8"
+                          name="votes_9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_8]"
+                          dataType="r8"
+                          name="votes_8" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_7]"
+                          dataType="r8"
+                          name="votes_7" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_6]"
+                          dataType="r8"
+                          name="votes_6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_5]"
+                          dataType="r8"
+                          name="votes_5" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_4]"
+                          dataType="r8"
+                          name="votes_4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_3]"
+                          dataType="r8"
+                          name="votes_3" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_2]"
+                          dataType="r8"
+                          name="votes_2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[votes_1]"
+                          dataType="r8"
+                          name="votes_1" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Saída de Erro de Destino OLE DB"
+                      synchronousInputId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence CSV\Carga Ratings\Origem do Excel"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Origem do Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+                  description="Origem do Excel"
+                  name="Origem do Excel"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowset">Worksheet$</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="O comando SQL a ser executado."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="A variável que contém o comando SQL a ser executado."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o modo usado para acessar o banco de dados."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="O mapeamento de parâmetros no comando SQL para variáveis."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel]"
+                      name="Saída de Origem do Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[imdb_title_id]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[imdb_title_id]"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[imdb_title_id]"
+                          name="imdb_title_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[weighted_average_vote]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[weighted_average_vote]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[weighted_average_vote]"
+                          name="weighted_average_vote"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[total_votes]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[total_votes]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[total_votes]"
+                          name="total_votes"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[mean_vote]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[mean_vote]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[mean_vote]"
+                          name="mean_vote"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[median_vote]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[median_vote]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[median_vote]"
+                          name="median_vote"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_10]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_10]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_10]"
+                          name="votes_10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_9]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_9]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_9]"
+                          name="votes_9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_8]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_8]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_8]"
+                          name="votes_8"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_7]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_7]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_7]"
+                          name="votes_7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_6]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_6]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_6]"
+                          name="votes_6"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_5]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_5]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_5]"
+                          name="votes_5"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_4]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_4]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_4]"
+                          name="votes_4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_3]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_3]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_3]"
+                          name="votes_3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_2]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_2]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_2]"
+                          name="votes_2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_1]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversão"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_1]"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].Columns[votes_1]"
+                          name="votes_1"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[imdb_title_id]"
+                          dataType="wstr"
+                          length="255"
+                          name="imdb_title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[weighted_average_vote]"
+                          dataType="r8"
+                          name="weighted_average_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[total_votes]"
+                          dataType="r8"
+                          name="total_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[mean_vote]"
+                          dataType="r8"
+                          name="mean_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[median_vote]"
+                          dataType="r8"
+                          name="median_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_10]"
+                          dataType="r8"
+                          name="votes_10" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_9]"
+                          dataType="r8"
+                          name="votes_9" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_8]"
+                          dataType="r8"
+                          name="votes_8" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_7]"
+                          dataType="r8"
+                          name="votes_7" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_6]"
+                          dataType="r8"
+                          name="votes_6" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_5]"
+                          dataType="r8"
+                          name="votes_5" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_4]"
+                          dataType="r8"
+                          name="votes_4" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_3]"
+                          dataType="r8"
+                          name="votes_3" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_2]"
+                          dataType="r8"
+                          name="votes_2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[votes_1]"
+                          dataType="r8"
+                          name="votes_1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_0age_avg_vote]"
+                          dataType="r8"
+                          name="allgenders_0age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_0age_votes]"
+                          dataType="r8"
+                          name="allgenders_0age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_18age_avg_vote]"
+                          dataType="r8"
+                          name="allgenders_18age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_18age_votes]"
+                          dataType="r8"
+                          name="allgenders_18age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_30age_avg_vote]"
+                          dataType="r8"
+                          name="allgenders_30age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_30age_votes]"
+                          dataType="r8"
+                          name="allgenders_30age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_45age_avg_vote]"
+                          dataType="r8"
+                          name="allgenders_45age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[allgenders_45age_votes]"
+                          dataType="r8"
+                          name="allgenders_45age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_allages_avg_vote]"
+                          dataType="r8"
+                          name="males_allages_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_allages_votes]"
+                          dataType="r8"
+                          name="males_allages_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_0age_avg_vote]"
+                          dataType="r8"
+                          name="males_0age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_0age_votes]"
+                          dataType="r8"
+                          name="males_0age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_18age_avg_vote]"
+                          dataType="r8"
+                          name="males_18age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_18age_votes]"
+                          dataType="r8"
+                          name="males_18age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_30age_avg_vote]"
+                          dataType="r8"
+                          name="males_30age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_30age_votes]"
+                          dataType="r8"
+                          name="males_30age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_45age_avg_vote]"
+                          dataType="r8"
+                          name="males_45age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[males_45age_votes]"
+                          dataType="r8"
+                          name="males_45age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_allages_avg_vote]"
+                          dataType="r8"
+                          name="females_allages_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_allages_votes]"
+                          dataType="r8"
+                          name="females_allages_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_0age_avg_vote]"
+                          dataType="r8"
+                          name="females_0age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_0age_votes]"
+                          dataType="r8"
+                          name="females_0age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_18age_avg_vote]"
+                          dataType="r8"
+                          name="females_18age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_18age_votes]"
+                          dataType="r8"
+                          name="females_18age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_30age_avg_vote]"
+                          dataType="r8"
+                          name="females_30age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_30age_votes]"
+                          dataType="r8"
+                          name="females_30age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_45age_avg_vote]"
+                          dataType="r8"
+                          name="females_45age_avg_vote" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[females_45age_votes]"
+                          dataType="r8"
+                          name="females_45age_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[top1000_voters_rating]"
+                          dataType="r8"
+                          name="top1000_voters_rating" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[top1000_voters_votes]"
+                          dataType="r8"
+                          name="top1000_voters_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[us_voters_rating]"
+                          dataType="r8"
+                          name="us_voters_rating" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[us_voters_votes]"
+                          dataType="r8"
+                          name="us_voters_votes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[non_us_voters_rating]"
+                          dataType="r8"
+                          name="non_us_voters_rating" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel].ExternalColumns[non_us_voters_votes]"
+                          dataType="r8"
+                          name="non_us_voters_votes" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel]"
+                      isErrorOut="true"
+                      name="Saída de Erro de Origem do Excel">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[imdb_title_id]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[imdb_title_id]"
+                          name="imdb_title_id" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[weighted_average_vote]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[weighted_average_vote]"
+                          name="weighted_average_vote" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[total_votes]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[total_votes]"
+                          name="total_votes" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[mean_vote]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[mean_vote]"
+                          name="mean_vote" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[median_vote]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[median_vote]"
+                          name="median_vote" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_10]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_10]"
+                          name="votes_10" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_9]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_9]"
+                          name="votes_9" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_8]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_8]"
+                          name="votes_8" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_7]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_7]"
+                          name="votes_7" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_6]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_6]"
+                          name="votes_6" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_5]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_5]"
+                          name="votes_5" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_4]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_4]"
+                          name="votes_4" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_3]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_3]"
+                          name="votes_3" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_2]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_2]"
+                          name="votes_2" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_1]"
+                          dataType="r8"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[votes_1]"
+                          name="votes_1" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence CSV\Carga Ratings.Paths[Saída de Origem do Excel]"
+                  endId="Package\Sequence CSV\Carga Ratings\Destino OLE DB.Inputs[Entrada de Destino OLE DB]"
+                  name="Saída de Origem do Excel"
+                  startId="Package\Sequence CSV\Carga Ratings\Origem do Excel.Outputs[Saída de Origem do Excel]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence CSV.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{FA1CBAB7-C966-4A71-B586-D71DAF2B92C3}"
+          DTS:From="Package\Sequence CSV\Carga Movies"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence CSV\Carga Ratings" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Sequence CSV\Carga Movies"
+          TopLeft="47,36" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Sequence CSV\Carga Ratings"
+          TopLeft="255,33" />
+        <EdgeLayout
+          Id="Package\Sequence CSV.PrecedenceConstraints[Constraint]"
+          TopLeft="189,55.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,0"
+              Start="0,0"
+              End="58.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="452,207"
+          Size="452,250"
+          Id="Package\Sequence CSV"
+          TopLeft="105,58" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence CSV\Carga Movies">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Sequence CSV\Carga Movies\Origem do Excel"
+          TopLeft="350,128" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Sequence CSV\Carga Movies\Destino OLE DB"
+          TopLeft="349,249" />
+        <EdgeLayout
+          Id="Package\Sequence CSV\Carga Movies.Paths[Saída de Origem do Excel]"
+          TopLeft="426.75,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79"
+              Start="0,0"
+              End="0,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence CSV\Carga Movies\Destino OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence CSV\Carga Movies\Origem do Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence CSV\Carga Ratings">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Sequence CSV\Carga Ratings\Origem do Excel"
+          TopLeft="356,102" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Sequence CSV\Carga Ratings\Destino OLE DB"
+          TopLeft="355,235" />
+        <EdgeLayout
+          Id="Package\Sequence CSV\Carga Ratings.Paths[Saída de Origem do Excel]"
+          TopLeft="432.75,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,91"
+              Start="0,0"
+              End="0,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence CSV\Carga Ratings\Origem do Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence CSV\Carga Ratings\Destino OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
